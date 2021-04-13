@@ -55,13 +55,14 @@
 	<h:form id="clienteForm">
 		<div
 			class="container-sm border border-secondary rounded p-3 m-5 mx-auto">
-			<h1>Cadastro de cliente</h1>
+			<h1>Alterar cadastro</h1>
 			<div class="p-5 border border-secondary rounded">
-				<h5>Informações pessoais</h5>
-				<div class="input-group">
-					<span class="input-group-text">Nome e sobrenome</span>
-					<h:inputText value="#{clienteBean.nome}" class="form-control"></h:inputText>
-				</div>
+				<h5>Selecione o cliente</h5>
+				<select class="form-select">
+					<option value="1">One</option>
+					<option value="2">Two</option>
+					<option value="3">Three</option>
+				</select>
 
 				<h5>Documentação</h5>
 				<div class="input-group">
@@ -116,9 +117,7 @@
 				</div>
 			</div>
 			<div class="mt-2">
-				<h:commandButton class="btn btn-success btn-lg" value="Salvar"
-					action="#{clienteBean.salvar}"></h:commandButton>
-				<span>#{clienteBean.mensagem}</span>
+				<h:commandButton class="btn btn-primary btn-lg" value="Alterar"></h:commandButton>
 			</div>
 		</div>
 
