@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core">
+<h:head>
+	<title>Olá mundo!</title>
+	<h:outputStylesheet
+		name="bootstrap-5.0.0-beta3-dist/css/bootstrap.min.css"></h:outputStylesheet>
+</h:head>
+
+<h:body>
+	<h:outputScript rendered="#{clienteBean.mostrarMensagem}">
+    	alert("#{clienteBean.mensagem}");
+    	window.location = "index.xhtml";
+	</h:outputScript>
+
+	<nav class="navbar navbar-expand-lg navbar-light bg-light">
+	<div class="container-fluid">
+		<a class="navbar-brand">Ultramax CRUD</a>
+		<button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+			data-bs-target="#navToggleable"
+			aria-controls="navbarSupportedContent" aria-expanded="false"
+			aria-label="Mostrar ou esconder menu">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="navToggleable">
+			<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+				<li class="nav-item"><a href="index.xhtml" class="nav-link"
+					aria-current="page">Cadastros recentes</a></li>
+				<li class="nav-item"><a class="nav-link">Todos os cadastros</a>
+				</li>
+				<li class="nav-item dropdown"><a
+					class="nav-link active dropdown-toggle" id="actions" role="button"
+					data-bs-toggle="dropdown" aria-expanded="false"> Ações </a>
+					<ul class="dropdown-menu" aria-labelledby="actions">
+						<li><a href="cadastrar.xhtml" class="dropdown-item">Cadastrar
+								clientes</a></li>
+						<li><a class="dropdown-item" href="alterar.xhtml">Alterar
+								clientes</a></li>
+						<li><a class="dropdown-item" href="remover.xhtml">Remover
+								clientes</a></li>
+					</ul></li>
+			</ul>
+			<form class="d-flex">
+				<input class="form-control me-2" type="search"
+					placeholder="Buscar cliente" aria-label="Buscar cliente" />
+				<button class="btn btn-outline-success" type="submit">Buscar</button>
+			</form>
+		</div>
+	</div>
+	</nav>
+
+	<h:form id="clienteForm">
+		<div
+			class="container-sm border border-secondary rounded p-3 m-5 mx-auto">
+			<h1>Cadastro de cliente</h1>
+			<div class="p-5 border border-secondary rounded">
+				<h5>Informações pessoais</h5>
+				<div class="input-group">
+					<span class="input-group-text">Nome e sobrenome</span>
+					<h:inputText value="#{clienteBean.nome}" class="form-control"></h:inputText>
+				</div>
+
+				<h5>Documentação</h5>
+				<div class="input-group">
+					<span class="input-group-text">Documento</span>
+					<h:inputText value="#{clienteBean.doc}" class="form-control"></h:inputText>
+					<h:commandButton action="#{clienteBean.addDocumento}"
+						class="btn btn-outline-secondary" value="Adicionar"></h:commandButton>
+					<h:commandButton class="btn btn-outline-danger"
+						action="#{clienteBean.clearDocumento}" value="Limpar"></h:commandButton>
+				</div>
+				<h:dataTable value="#{clienteBean.nomesDocumentos}" var="documento">
+					<h:column>
+						<h:outputText value="#{documento}"></h:outputText>
+					</h:column>
+				</h:dataTable>
+
+				<h5>Informações para contato</h5>
+				<div class="input-group">
+					<span class="input-group-text">Info. de contato</span>
+
+					<h:inputText value="#{clienteBean.contat}" class="form-control"></h:inputText>
+
+					<h:commandButton class="btn btn-outline-secondary"
+						action="#{clienteBean.addContato}" value="Adicionar"></h:commandButton>
+					<h:commandButton class="btn btn-outline-danger"
+						action="#{clienteBean.clearContato}" value="Limpar"></h:commandButton>
+				</div>
+
+				<h:dataTable value="#{clienteBean.nomesContatos}" var="contato">
+					<h:column>
+						<h:outputText value="#{contato}"></h:outputText>
+					</h:column>
+				</h:dataTable>
+			</div>
+			<div class="p-5 border border-secondary rounded mt-3">
+				<h5>Endereço</h5>
+				<div class="input-group">
+					<span class="input-group-text">Logradouro e número</span>
+					<h:inputText class="form-control" value="#{clienteBean.logradouro}"></h:inputText>
+					<h:inputText class="form-control" value="#{clienteBean.numero}"></h:inputText>
+				</div>
+				<div class="input-group mt-2">
+					<span class="input-group-text">Bairro</span>
+					<h:inputText class="form-control" value="#{clienteBean.bairro}"></h:inputText>
+				</div>
+				<div class="input-group mt-2">
+					<span class="input-group-text">Cidade e estado</span>
+					<h:inputText class="form-control" value="#{clienteBean.cidade}"></h:inputText>
+					<h:inputText class="form-control" value="#{clienteBean.estado}"></h:inputText>
+					<span class="input-group-text">CEP</span>
+					<h:inputText class="form-control" value="#{clienteBean.cep}"></h:inputText>
+				</div>
+			</div>
+			<div class="mt-2">
+				<h:commandButton class="btn btn-primary btn-lg" value="Salvar"
+					action="#{clienteBean.salvar}"></h:commandButton>
+				<span>#{clienteBean.mensagem}</span>
+			</div>
+		</div>
+
+
+
+	</h:form>
+
+	<h:outputScript name="bootstrap-5.0.0-beta3-dist/js/bootstrap.min.js" />
+</h:body>
+
+</html>

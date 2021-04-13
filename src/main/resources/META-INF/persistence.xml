@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.0"
+	xmlns="http://java.sun.com/xml/ns/persistence"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
+	<!-- MSSQL -->
+	<persistence-unit name="em-mssql">
+		<provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+		
+		<class>br.com.ultramax.exemplojsf.domain.Documento</class>
+		<class>br.com.ultramax.exemplojsf.domain.Cliente</class>
+		<class>br.com.ultramax.exemplojsf.domain.Contato</class>
+		<class>br.com.ultramax.exemplojsf.domain.Endereco</class>
+		<properties>
+			<property name="javax.persistence.jdbc.url" value="jdbc:sqlserver://192.168.0.14;databaseName=CRUDUltramax" />
+			<property name="hibernate.dialect" value="org.hibernate.dialect.SQLServer2008Dialect" />
+			<property name="hibernate.show_sql" value="false" />
+			<property name="hibernate.format_sql" value="true" />
+			<property name="hibernate.hbm2ddl.auto" value="update" />
+			<property name="javax.persistence.jdbc.driver" value="com.microsoft.sqlserver.jdbc.SQLServerDriver" />
+			<property name="javax.persistence.jdbc.user" value="sa" />
+			<property name="javax.persistence.jdbc.password" value="sa" />
+		</properties>
+	</persistence-unit>
+	
+	<!--
+	<persistence-unit name="emTeste">
+		<provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+		<properties>
+			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost/exemplohibernate" />
+			<property name="javax.persistence.jdbc.user" value="root" />
+			<property name="javax.persistence.jdbc.password" value="infra48" />
+			<property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver" />
+			<property name="hibernate.dialect" value="org.hibernate.dialect.MySQL5InnoDBDialect" />
+			<property name="hibernate.show_sql" value="true" />
+			<property name="hibernate.format_sql" value="true" />
+			<property name="hibernate.hbm2ddl.auto" value="update" />
+		</properties>
+	</persistence-unit> MySQL -->
+	
+	
+</persistence>
